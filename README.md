@@ -77,4 +77,3 @@ queue = sqs.queues.create('my-queue')
 queue.send_message({"test" : "message"})
 
 ```
-
