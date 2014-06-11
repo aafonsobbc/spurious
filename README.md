@@ -18,7 +18,7 @@ The following applications are required:
 * [Vagrant](http://www.vagrantup.com/)
 * [VirtualBox](https://www.virtualbox.org/) or [VMWare](http://www.vmware.com/uk/)
 
-You'll also need to docker cli tools
+You'll also need to install the docker cli client:
 
 ### OSX
 
