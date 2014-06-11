@@ -24,7 +24,7 @@ You'll also need to install the docker cli client:
 
 ```
 brew install docker
-export DOCKER_HOST='tcp://0.0.0.0:2375
+export DOCKER_HOST='tcp://0.0.0.0:2375'
 ```
 
 ### Installation
