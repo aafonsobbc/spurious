@@ -16,17 +16,19 @@ $setup = <<SCRIPT
   docker run -d --name local-dynamo -p 4570:4570 smaj/local-dynamo
   docker run -d --name memcached_server -p 11211:11211 smaj/memcached
   docker run -d --name fake_elasticache --link memcached_server:memcached01 -p 11212:11212 smaj/fake-elasticache
+  docker run -d --name fake_elasticache_local --link memcached_server:memcached01 -p 11213:11212 -e FAKEELASTICACHE_DEFAULT_HOST='127.0.0.1' smaj/fake-elasticache
 
 SCRIPT
 
   # Commands required to ensure correct docker containers
   # are started when the vm is rebooted.
-  $start = <<SCRIPT
+$start = <<SCRIPT
   docker start fake-s3
   docker start fake-sqs
   docker start local-dynamo
   docker start memcached_server
   docker start fake_elasticache
+  docker start fake_elasticache_local
 SCRIPT
 
 CLOUD_CONFIG_PATH = "./user-data"
@@ -91,6 +93,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 2375, host: 2375, auto_correct: true
   config.vm.network "forwarded_port", guest: 11211, host: 11211, auto_correct: true
   config.vm.network "forwarded_port", guest: 11212, host: 11212, auto_correct: true
+  config.vm.network "forwarded_port", guest: 11213, host: 11213, auto_correct: true
   config.vm.network "forwarded_port", guest: 4568, host: 4568, auto_correct: true
   config.vm.network "forwarded_port", guest: 4569, host: 4569, auto_correct: true
   config.vm.network "forwarded_port", guest: 4570, host: 4570, auto_correct: true
