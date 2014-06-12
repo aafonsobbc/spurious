@@ -41,6 +41,7 @@ Once the box is up you'll have the following endpoints available on your local m
 * sqs - localhost:4568
 * dynamodb - localhost:4570
 * elasticache - localhost:11212
+* elasticache (Can be used locally instead of from inside a docker container) - localhost:11213
 
 ## Example
 
